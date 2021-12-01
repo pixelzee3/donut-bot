@@ -2,7 +2,7 @@
   "name": "donutbot",
   "version": "0.2.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/src/index.js",
   "scripts": {
   },
   "keywords": [],
