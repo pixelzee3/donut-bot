@@ -1,12 +1,7 @@
-const { token } = require(`${__dirname}/../config/config.json`);
-const { Client, Collection, Intents } = require('discord.js');
+import { token } from '../config/config.json';
+import {Client, Intents } from 'discord.js';
 
-const client = new Client({
-    intents: [
-        Intents.FLAGS.GUILDS,
-        Intents.FLAGS.GUILD_MESSAGES
-    ]
-});
+const client = new Client({intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]});
 
 client.once('ready', () => {
     console.log('Bot initialized.');
