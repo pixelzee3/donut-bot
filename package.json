@@ -2,9 +2,8 @@
   "name": "donutbot",
   "version": "0.2.0",
   "description": "",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "node src/index.js"
   },
   "keywords": [],
   "author": "",
