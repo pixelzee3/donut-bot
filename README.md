@@ -2,7 +2,7 @@
 A fancy-ass Discord bot that can do many useful things!
 
 Some neat info:
-*   Language: Typescript
+*   Language: TypeScript
 *   Current version: v0.0.2
 
 ## Highlight function: Summon
