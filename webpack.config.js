@@ -6,5 +6,6 @@ module.exports = {
   },
   output: {
     filename: '[name].js',
+    clean: true,
   },
 };
