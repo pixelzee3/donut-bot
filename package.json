@@ -1,0 +1,24 @@
+{
+  "name": "donut-bot",
+  "version": "1.0.0",
+  "description": "A fancy-ass Discord bot with various features, including **summon**.",
+  "source": "src/index.ts",
+  "main": "dist/main.js",
+  "scripts": {
+    "watch": "parcel watch",
+    "build": "parcel build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pixelzee3/donut-bot.git"
+  },
+  "author": "PixelZee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pixelzee3/donut-bot/issues"
+  },
+  "homepage": "https://github.com/pixelzee3/donut-bot#readme",
+  "devDependencies": {
+    "parcel": "^2.5.0"
+  }
+}
