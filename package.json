@@ -2,9 +2,11 @@
   "name": "donut-bot",
   "version": "1.0.0",
   "description": "A fancy-ass Discord bot with various features, including **summon**.",
+  "source": "src/main.ts",
+  "main": "dist/main.js",
   "scripts": {
-    "watch": "parcel watch src/main.ts",
-    "build": "parcel build src/main.ts --no-scope-hoist"
+    "watch": "parcel watch",
+    "build": "parcel build"
   },
   "repository": {
     "type": "git",
