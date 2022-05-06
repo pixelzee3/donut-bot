@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "A fancy-ass Discord bot with various features, including **summon**.",
   "scripts": {
-    "watch": "parcel watch src/index.ts",
-    "build": "parcel build src/index.ts"
+    "watch": "parcel watch src/main.ts",
+    "build": "parcel build src/main.ts"
   },
   "repository": {
     "type": "git",
