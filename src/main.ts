@@ -1,3 +1,5 @@
+// TODO: Read and execute external command files here and in deploy-commands.ts
+
 // Require the necessary discord.js classes
 import { Client, Intents } from 'discord.js';
 
