@@ -2,14 +2,17 @@ import 'dotenv/config';
 import { Client, Collection, Intents } from 'discord.js';
 import * as fs from 'node:fs';
 
-// Create a new client instance and command collections
+// Create a new client instance
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
-const commands = new Collection();
-const commandFiles = fs
-    .readdirSync(`${__dirname}/commands`)
-    .filter((file) => file.endsWith('.ts'));
 
-// Loop over commandFiles and register them in commands
+// Create a new collection for the commandFiles
+const commandFiles = fs
+.readdirSync(`${__dirname}/commands`)
+.filter((file) => file.endsWith('.ts'));
+
+// Loop over commandFiles and register them in the commands collection/hashmap
+const commands = new Collection();
+
 for (const file of commandFiles) {
     const command = require(`${__dirname}/commands/${file}`);
     commands.set(command.name, command);
@@ -20,6 +23,7 @@ client.once('ready', () => {
     console.log('Ready!');
 });
 
+// When the client receives an interaction, run the command if available in the commands collection
 client.on('interactionCreate', async (interaction) => {
     if (!interaction.isCommand()) return;
 
