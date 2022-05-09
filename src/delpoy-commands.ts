@@ -5,10 +5,9 @@ const commands = [];
 
 const rest = new REST({ version: '9' }).setToken(process.env.token);
 
-rest
-  .put(
+rest.put(
     Routes.applicationGuildCommands(process.env.clientId, process.env.guildId),
     { body: commands }
-  )
-  .then(() => console.log('Successfully registered application commands.'))
-  .catch(console.error);
+)
+    .then(() => console.log('Successfully registered application commands.'))
+    .catch(console.error);
