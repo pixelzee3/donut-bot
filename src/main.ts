@@ -6,13 +6,12 @@ import * as fs from 'node:fs';
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 const commands = new Collection();
 const commandFiles = fs
-  .readdirSync('./commands')
+  .readdirSync(`${__dirname}/commands`)
   .filter((file) => file.endsWith('.ts'));
 
 // Loop over commandFiles and register them in commands
-// TODO: Fix relative path stuff (potential useful link: https://stackoverflow.com/questions/32705219/nodejs-accessing-file-with-relative-path)
 for (const file of commandFiles) {
-  const command = require(`./commands/${file}`);
+  const command = require(`${__dirname}/commands/${file}`);
   commands.set(command.name, command);
 }
 
