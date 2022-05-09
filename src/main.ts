@@ -1,1 +1,3 @@
-console.log('tEst');
+import 'dotenv/config'
+
+console.log(process.env.token);
