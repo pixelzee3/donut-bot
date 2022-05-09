@@ -7,8 +7,8 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
 // Create a new collection for the commandFiles
 const commandFiles = fs
-.readdirSync(`${__dirname}/commands`)
-.filter((file) => file.endsWith('.ts'));
+    .readdirSync(`${__dirname}/commands`)
+    .filter((file) => file.endsWith('.ts'));
 
 // Loop over commandFiles and register them in the commands collection/hashmap
 const commands = new Collection();
@@ -37,7 +37,10 @@ client.on('interactionCreate', async (interaction) => {
         // await command.execute(interaction);
     } catch (err) {
         console.log(err);
-        await interaction.reply({content: 'There was an error while executing this command!', ephemeral: true});
+        await interaction.reply({
+            content: 'There was an error while executing this command!',
+            ephemeral: true,
+        });
     }
 });
 
