@@ -7,5 +7,6 @@
     "rootDir": "./src",
     "outDir": "./dist",
     "target": "ES5",
+    "noImplicitAny": false,
   }
 }
