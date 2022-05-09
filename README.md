@@ -16,7 +16,7 @@ guildId=97175820583095673
 ```
 npm run build
 ```
-Parcel will bundle the source files and environment variables into the `./dist` directory.
+TypeScript compiler will bundle the source files and environment variables into the `./dist` directory.
 ### Run the bot using Node.js
 ```
 node dist/main.js
