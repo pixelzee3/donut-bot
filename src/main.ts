@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import { Client, Collection, Intents } from 'discord.js';
 import * as fs from 'node:fs';
+import { DiscordCommand } from './types';
 
 // Create a new client instance
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
@@ -8,14 +9,14 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 // Create a new collection for the commandFiles
 const commandFiles = fs
     .readdirSync(`${__dirname}/commands`)
-    .filter((file) => file.endsWith('.ts'));
+    .filter((file) => file.endsWith('.js'));
 
 // Loop over commandFiles and register them in the commands collection/hashmap
-const commands = new Collection();
+const commands = new Collection<string, DiscordCommand>();
 
 for (const file of commandFiles) {
     const command = require(`${__dirname}/commands/${file}`);
-    commands.set(command.name, command);
+    commands.set(command.data.name, command);
 }
 
 // When the client is ready, run this code (only once)
@@ -33,8 +34,7 @@ client.on('interactionCreate', async (interaction) => {
     if (!command) return;
 
     try {
-        // TODO: Create Discord command interface so TypeScript knows what a command object should be like.
-        // await command.execute(interaction);
+        await command.execute(interaction);
     } catch (err) {
         console.log(err);
         await interaction.reply({
