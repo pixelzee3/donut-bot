@@ -40,4 +40,4 @@ function deployCommands(global: boolean) {
     }
 }
 
-deployCommands(false);
+deployCommands(process.env.deployCommandsGlobally === 'true');
