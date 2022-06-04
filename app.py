@@ -1,6 +1,6 @@
 # Import libraries
 from dotenv import load_dotenv
-import discord
+from discord.ext import commands
 import os
 import logging
 
@@ -21,18 +21,19 @@ except Exception as err:
     raise err
 
 # Define Discord bot
-client = discord.Client()
+bot = commands.Bot(command_prefix='!')
 
-@client.event
+@bot.event
 async def on_ready():
-    print(f'Logged in as {client.user}')
+    print(f'Logged in as {bot.user}')
 
-@client.event
+@bot.event
 async def on_message(message):
-    if message.author == client.user:
+    if message.author == bot.user:
         return
 
     if message.content.startswith('$hello'):
         await message.channel.send('Hello!')
 
-client.run(token)
+# Run bot
+bot.run(token)
