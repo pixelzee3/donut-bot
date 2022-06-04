@@ -1,17 +1,23 @@
+# Import libraries
 from dotenv import load_dotenv
 import discord
 import os
 
 # Load environment variables
-load_dotenv()
-token = os.environ['token']
+try:
+    load_dotenv()
+    token = os.environ['token']
+except Exception as err:
+    print("❌ Error: No token found")
+    print("==========================")
+    raise err
 
 # Define Discord bot
 client = discord.Client()
 
 @client.event
 async def on_ready():
-    print('We have logged in as {0.user}'.format(client))
+    print(f'Logged in as {client.user}')
 
 @client.event
 async def on_message(message):
