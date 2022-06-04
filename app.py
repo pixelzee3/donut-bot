@@ -1,3 +1,6 @@
+# TODO: Somehow make bot commands scalable
+
+
 # Import libraries
 from dotenv import load_dotenv
 from discord.ext import commands
