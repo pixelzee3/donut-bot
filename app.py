@@ -21,7 +21,7 @@ except Exception as err:
     raise err
 
 # Define Discord bot
-bot = commands.Bot(command_prefix='!')
+bot = commands.Bot(command_prefix='d!')
 
 @bot.event
 async def on_ready():
