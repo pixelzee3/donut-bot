@@ -1,4 +1,4 @@
-# TODO: Somehow make bot commands scalable
+# TODO: Somehow make bot commands scalable. Current solution enables the bot to use commands from external modules. However, they must be imported manually. Next step is to iteratively import all the modules in the 'commands' folder. Potentially useful resource: https://www.tutorialspoint.com/Can-we-iteratively-import-python-modules-inside-a-for-loop
 
 
 # Import libraries
@@ -6,12 +6,19 @@ from dotenv import load_dotenv
 from discord.ext import commands
 import os
 import logging
+import sys
+
+# Import modules
+from commands.test import test
+sys.path.append('commands')
 
 # Define logger
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
-handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
-handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
+handler = logging.FileHandler(
+    filename='discord.log', encoding='utf-8', mode='w')
+handler.setFormatter(logging.Formatter(
+    '%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
 logger.addHandler(handler)
 
 # Load environment variables
@@ -24,19 +31,18 @@ except Exception as err:
     raise err
 
 # Define Discord bot
-bot = commands.Bot(command_prefix='d!')
+bot = commands.Bot(command_prefix='%')
 
 @bot.event
 async def on_ready():
     print(f'Logged in as {bot.user}')
 
-@bot.event
-async def on_message(message):
-    if message.author == bot.user:
-        return
+@commands.command()
+async def hello(ctx: commands.Context):
+    await ctx.send('Hello world!')
 
-    if message.content.startswith('$hello'):
-        await message.channel.send('Hello!')
+bot.add_command(hello)
+bot.add_command(test)
 
 # Run bot
 bot.run(token)
